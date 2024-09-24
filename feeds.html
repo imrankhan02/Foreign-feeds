@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreign Feed with Stories</title>
+
+    <!-- CSS inside HTML -->
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Stories Section */
+        .stories-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+
+        .story {
+            display: inline-block;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .story img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #ff385c;
+            cursor: pointer;
+        }
+
+        .story span {
+            display: block;
+            font-size: 12px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        /* Feed Container */
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Post Styles */
+        .post {
+            width: 400px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        .post-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .post-content {
+            padding: 10px;
+        }
+
+        .post-content button {
+            background-color: #ff385c;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .post-content button:hover {
+            background-color: #e6244f;
+        }
+
+        .comment-section {
+            margin-top: 10px;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            display: none; /* Hidden by default, will show on 'Comment' button click */
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        .comment-section button {
+            margin-top: 5px;
+        }
+
+        .comments-list {
+            margin-top: 10px;
+        }
+
+        .comments-list p {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .liked {
+            background-color: #ff6b81 !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Foreign Feedzz</h1>
+    </div>
+
+    <!-- Stories Section -->
+    <div class="stories-container">
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 1">
+            <span>User1</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 2">
+            <span>User2</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 3">
+            <span>User3</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 4">
+            <span>User4</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 5">
+            <span>User5</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 6">
+            <span>User6</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 7">
+            <span>User7</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 8">
+            <span>User8</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 9">
+            <span>User9</span>
+        </div>
+        <div class="story">
+            <img src="https://via.placeholder.com/60" alt="Story 10">
+            <span>User10</span>
+        </div>
+        
+    </div>
+
+    <div class="feed-container">
+        <div class="post">
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User1</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User1</strong> Enjoying the sunset!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post"></div>
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User3</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User3</strong> Hiking the mountains today!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User4</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User4</strong> Delicious pizza for lunch!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User2</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User2</strong> Morning coffee vibes ☕</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+        <div class="post"></div>
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User3</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User3</strong> Hiking the mountains today!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User4</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User4</strong> Delicious pizza for lunch!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+        <div class="post"></div>
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User3</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User3</strong> Hiking the mountains today!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User4</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User4</strong> Delicious pizza for lunch!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+        <div class="post"></div>
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User3</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User3</strong> Hiking the mountains today!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40" alt="User" class="user-avatar">
+                <span class="username">User4</span>
+            </div>
+            <img src="https://via.placeholder.com/400" alt="Post Image" class="post-image">
+            <div class="post-content">
+                <button class="like-btn">❤️ Like</button>
+                <button class="share-btn">🔗 Share</button>
+                <button class="comment-btn">💬 Comment</button>
+                <p><strong>User4</strong> Delicious pizza for lunch!</p>
+                <div class="comment-section">
+                    <textarea placeholder="Write a comment..." rows="2"></textarea>
+                    <button class="add-comment-btn">Post Comment</button>
+                    <div class="comments-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript inside HTML -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Like Button Toggle
+            const likeButtons = document.querySelectorAll('.like-btn');
+            
+            likeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    if (this.classList.contains('liked')) {
+                        this.classList.remove('liked');
+                        this.textContent = '❤️ Like';
+                    } else {
+                        this.classList.add('liked');
+                        this.textContent = '💔 Unlike';
+                    }
+                });
+            });
+
+            // Share Button Action
+            const shareButtons = document.querySelectorAll('.share-btn');
+            
+            shareButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    alert('Post shared! (Simulated)');
+                });
+            });
+
+            // Comment Button Action
+            const commentButtons = document.querySelectorAll('.comment-btn');
+            
+            commentButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const commentSection = this.parentElement.querySelector('.comment-section');
+                    if (commentSection.style.display === 'none' || commentSection.style.display === '') {
+                        commentSection.style.display = 'block';
+                    } else {
+                        commentSection.style.display = 'none';
+                    }
+                });
+            });
+
+            // Add Comment
+            const addCommentButtons = document.querySelectorAll('.add-comment-btn');
+            
+            addCommentButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const commentInput = this.previousElementSibling;
+                    const commentText = commentInput.value.trim();
+                    if (commentText) {
+                        const commentList = this.nextElementSibling;
+                        const newComment = document.createElement('p');
+                        newComment.textContent = commentText;
+                        commentList.appendChild(newComment);
+                        commentInput.value = '';  // Clear input
+                    }
+                });
+            });
+
+            // Story Click Event (Simulated)
+            const stories = document.querySelectorAll('.story img');
+            stories.forEach(story => {
+                story.addEventListener('click', function () {
+                    alert(`Viewing ${this.nextElementSibling.textContent}'s story!`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
